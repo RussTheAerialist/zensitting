@@ -28,9 +28,9 @@ class EventWatcher(object):
             for msg in messages:
                 if msg.event in self._map:
                     self._map[msg.event](msg.event, msg.data)
-                else:
-                    print("Unknown Event Type, Ignoring: {0}".format(msg.id))
-                    print(msg.id, msg.event)
+                # elif msg.event is not "message":
+                #     print("Unknown Event Type, Ignoring: {0}".format(msg.id))
+                #     print(msg.id, msg.event)
 
         except requests.exceptions.HTTPError, ex:
             print(ex.response.text)
