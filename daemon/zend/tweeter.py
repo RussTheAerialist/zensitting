@@ -3,12 +3,13 @@ import tweepy
 cc_msg = "// @RussellHay"
 
 class Tweeter(object):
-    def __init__(self, consumer_token, consumer_secret, access_key, access_secret, gen_method):
+    def __init__(self, consumer_token, consumer_secret, access_key, access_secret, device_id, device_token, gen_method):
         auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
         auth.set_access_token(access_key, access_secret)
 
         self._api = tweepy.API(auth)
         self._generator = gen_method
+        self._spark = (device_id, device_token)
 
     def produce(self, msg=None, cc=False):
         if msg is None:
@@ -20,4 +21,4 @@ class Tweeter(object):
 
     def __call__(self):
         # TODO: setup the daemon polling for events
-        self.produce(cc=True)
+        pass
