@@ -4,8 +4,8 @@ import json
 
 import tweepy
 
-import tweeter
-import tweetgen
+import zend.tweeter
+import zend.tweetgen
 
 def usage(in_args):
     parser = argparse.ArgumentParser()
@@ -56,10 +56,10 @@ def handle_auth(consumer_token, consumer_secret, with_browser, device_id, device
 
 def handle_daemon(data):
 
-    gen = tweetgen.Generator()
+    gen = zend.tweetgen.Generator()
     data['gen_method'] = gen
 
-    daemon = tweeter.Tweeter(**data)
+    daemon = zend.tweeter.Tweeter(**data)
     daemon()
 
 def main(args=sys.argv[1:]):
