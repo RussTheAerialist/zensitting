@@ -70,7 +70,7 @@ def main(args=sys.argv[1:]):
             data = json.load(f)
             handle_daemon(data)
     else:
-        handle_auth(args.consumer_token, args.consumer_secret, args.open_browser)
+        handle_auth(args.consumer_token, args.consumer_secret, args.open_browser, args.device_id, args.device_token)
 
 if __name__=="__main__":
     main()
